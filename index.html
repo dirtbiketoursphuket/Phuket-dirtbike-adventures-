@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phuket Dirtbike Adventure | Private Guided Tours & Rental</title>
+  <meta name="description" content="Phuket Dirtbike Adventure — private guided tours and rental. Explore hidden trails, waterfalls, beaches and viewpoints. Protective gear, fuel and medical insurance included. Beginner friendly.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f7f5f2;
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+                  url('photo1.jpg') center/cover no-repeat;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 2.5rem 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.3rem, 6.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: #f5a623; }
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.9rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-green {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-green:hover {
+      background: #1ebe57;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.75);
+      margin-left: 0.7rem;
+    }
+    .btn-outline:hover {
+      background: #fff;
+      color: #1a1a1a;
+    }
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .section-title h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+    .section-title p {
+      color: #555;
+      font-size: 1.05rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+    .feature {
+      background: #fff;
+      padding: 1.7rem 1.4rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .feature .icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .feature h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+    .feature p { color: #555; font-size: 0.95rem; }
+
+    .beginner-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 1.8rem;
+      margin-top: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .beginner-box h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.7rem;
+      color: #1a1a1a;
+    }
+    .beginner-box p {
+      color: #444;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* Video */
+    .video-section {
+      padding: 3rem 1.5rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      background: #111;
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 340px;
+      object-fit: cover;
+    }
+
+    /* Slideshow */
+    .slideshow-section {
+      padding: 3rem 1.5rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      background: #111;
+    }
+    .slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    /* FAQ */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 1rem;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 1.1rem 1.3rem;
+      background: none;
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: inherit;
+    }
+    .faq-question:hover {
+      background: #fafafa;
+    }
+    .faq-question .arrow {
+      font-size: 1.2rem;
+      transition: transform 0.25s ease;
+      color: #f5a623;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-question .arrow {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1.3rem;
+      color: #444;
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0 1.3rem 1.2rem;
+    }
+
+    .note {
+      background: #fff8e8;
+      border-left: 4px solid #f5a623;
+      padding: 1.2rem 1.4rem;
+      border-radius: 0 10px 10px 0;
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      font-size: 1rem;
+      color: #333;
+    }
+    .contact {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 18px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 3rem 1.5rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.7rem;
+    }
+    .contact p {
+      opacity: 0.92;
+      margin-bottom: 1.6rem;
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      justify-content: center;
+    }
+    .contact .btn-outline {
+      border-color: rgba(255,255,255,0.55);
+    }
+    .contact .btn-outline:hover {
+      background: #fff;
+      color: #1a1a1a;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1.5rem 2.5rem;
+      color: #666;
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .btn-outline { margin-left: 0; margin-top: 0.6rem; }
+      .hero { min-height: 75vh; }
+      .slideshow { height: 300px; }
+      .video-wrapper video { max-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <h1>Dirt Bike Rental &<br><span>Private Guided Tours</span></h1>
+      <p>Explore hidden mountain trails, waterfalls, beaches & viewpoints. Personalised rides open to all experience levels.</p>
+      <div>
+        <a href="https://wa.me/66846251083" class="btn btn-green" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="https://maps.app.goo.gl/a8knsdrs3tMnfh6C6" class="btn btn-outline" target="_blank" rel="noopener">Location</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="section-title">
+      <h2>What We Offer</h2>
+      <p>Professional rides tailored to you</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">🏍️</div>
+        <h3>Private Guided Tours</h3>
+        <p>Personalised rides exploring hidden mountain trails, waterfalls, beaches and viewpoints across Phuket.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🛡️</div>
+        <h3>Everything Included</h3>
+        <p>Protective gear, fuel and medical insurance included with every rental and tour.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌴</div>
+        <h3>All Experience Levels</h3>
+        <p>Open to everyone — from complete beginners to experienced riders. We adapt the route to your skill.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📍</div>
+        <h3>Honda CRF Bikes</h3>
+        <p>Well-maintained CRF dirt bikes ready for Phuket’s trails, jungle tracks and mountain roads.</p>
+      </div>
+    </div>
+
+    <div class="beginner-box">
+      <h3>Beginner Friendly</h3>
+      <p>We also train people on light trails so beginners can feel confident and learn with us. No previous dirt bike experience needed — just a valid driver’s licence and a willingness to ride.</p>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <div class="video-section">
+    <div class="section-title">
+      <h2>Experience the trails</h2>
+      <p>Real footage from our rides</p>
+    </div>
+    <div class="video-wrapper">
+      <video controls playsinline preload="metadata" poster="photo3.jpg">
+        <source src="tour-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- SLIDESHOW -->
+  <div class="slideshow-section">
+    <div class="section-title">
+      <h2>On the trails</h2>
+      <p>Real rides around Phuket</p>
+    </div>
+    <div class="slideshow" id="slideshow">
+      <img src="photo1.jpg" class="active" alt="">
+      <img src="photo2.jpg" alt="">
+      <img src="photo3.jpg" alt="">
+      <img src="photo4.jpg" alt="">
+      <img src="photo5.jpg" alt="">
+      <img src="photo6.jpg" alt="">
+      <img src="photo7.jpg" alt="">
+      <img src="photo8.jpg" alt="">
+      <img src="photo9.jpg" alt="">
+      <img src="photo10.jpg" alt="">
+      <img src="photo11.jpg" alt="">
+      <img src="photo12.jpg" alt="">
+      <img src="photo13.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="section-title">
+      <h2>Common Questions</h2>
+      <p>Click a question to see the answer</p>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can a complete beginner ride dirt bikes? <span class="arrow">▼</span></button>
+      <div class="faq-answer">Yes. We train beginners on light trails so you can feel confident. No previous dirt bike experience is needed — just a valid driver’s licence and a willingness to learn.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do I need a motorcycle licence? <span class="arrow">▼</span></button>
+      <div class="faq-answer">You need at least a driver’s licence from your home country.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What’s included? <span class="arrow">▼</span></button>
+      <div class="faq-answer">Protective gear, fuel and medical insurance are included with every rental and guided tour.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Are the tours private? <span class="arrow">▼</span></button>
+      <div class="faq-answer">Yes. We run private guided tours tailored to your experience and preferred pace — from easy scenic rides to more technical trails.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What if the weather is bad? <span class="arrow">▼</span></button>
+      <div class="faq-answer">Message us on WhatsApp. We’ll advise on current conditions and can reschedule or adjust the route if needed.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can I rent a bike without a guide? <span class="arrow">▼</span></button>
+      <div class="faq-answer">Yes. Self-ride rental is available. Guided tours are recommended if you’re new to dirt bikes or want to explore hidden trails safely.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Where do we meet? <span class="arrow">▼</span></button>
+      <div class="faq-answer">We’ll send you the exact meeting point and directions on WhatsApp when you book.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How long are the rides? <span class="arrow">▼</span></button>
+      <div class="faq-answer">Tours are around 4 hours with a 1-hour break in between.</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Note:</strong> Prices, availability, weather conditions and full details are provided on WhatsApp. Please message us for the latest information.
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <h2>Ready to Ride?</h2>
+    <p>Message us on WhatsApp for current prices, availability, weather conditions and to book your private tour or rental.</p>
+    <div class="contact-buttons">
+      <a href="https://wa.me/66846251083" class="btn btn-green" target="_blank" rel="noopener">💬 WhatsApp +66 84 625 1083</a>
+      <a href="https://maps.app.goo.gl/a8knsdrs3tMnfh6C6" class="btn btn-outline" target="_blank" rel="noopener">📍 Location</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Phuket Dirtbike Adventure</strong></p>
+    <p>Private Guided Tours & CRF Rental • Phuket, Thailand</p>
+    <p style="margin-top: 0.7rem;">
+      <a href="https://wa.me/66846251083" target="_blank" rel="noopener">WhatsApp</a> · 
+      <a href="https://maps.app.goo.gl/a8knsdrs3tMnfh6C6" target="_blank" rel="noopener">Location</a>
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.85rem;">© 2026 Phuket Dirtbike Adventure</p>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('#slideshow img');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 2000);
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
